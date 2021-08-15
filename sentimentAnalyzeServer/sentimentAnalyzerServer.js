@@ -29,50 +29,43 @@ app.get("/",(req,res)=>{
 
 app.get("/url/emotion", (req,res) => {
 
-    return res.send(
-naturalLanguageUnderstanding.analyze(analyzeParams)
+  naturalLanguageUnderstanding.analyze(req.query.data)
   .then(analysisResults => {
-    console.log(JSON.stringify(analysisResults, null, 2));
+    return res.send(JSON.stringify(analysisResults, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
-  }););
+  });
 });
 
 app.get("/url/sentiment", (req,res) => {
-    return res.send(
-naturalLanguageUnderstanding.analyze(analyzeParams)
+naturalLanguageUnderstanding.analyze(req.query.data)
   .then(analysisResults => {
-    console.log(JSON.stringify(analysisResults, null, 2));
+    return res.send(JSON.stringify(analysisResults, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
   });
-);
 });
 
 app.get("/text/emotion", (req,res) => {
-    return res.send(
-naturalLanguageUnderstanding.analyze(analyzeParams)
+naturalLanguageUnderstanding.analyze(req.query.data)
   .then(analysisResults => {
-    console.log(JSON.stringify(analysisResults, null, 2));
+   return res.send(JSON.stringify(analysisResults, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
   });
-);
 });
 
 app.get("/text/sentiment", (req,res) => {
-    return res.send(
-naturalLanguageUnderstanding.analyze(analyzeParams)
+naturalLanguageUnderstanding.analyze(req.query.data)
   .then(analysisResults => {
-    console.log(JSON.stringify(analysisResults, null, 2));
+   return res.send(JSON.stringify(analysisResults, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
   });
-);
 });
 
 let server = app.listen(8080, () => {
